@@ -53,47 +53,43 @@ $data['ava'] = $session_data['ava'];
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('index.php/user');?>">
-                            <i class="material-icons">person</i>
-                            <p>User Profile</p>
+                        <a href="<?php echo base_url('index.php/booking');?>">
+                            <i class="material-icons">add_to_queue</i>
+                            <p>Booking</p>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('index.php/roomtype');?>">
-                            <i class="material-icons">content_paste</i>
-                            <p>Table List</p>
+                        <a href="<?php echo base_url('index.php/payment');?>">
+                            <i class="material-icons text-gray">payment</i>
+                            <p>Pembayaran</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('index.php/user');?>">
+                            <i class="material-icons">person</i>
+                            <p>User</p>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('index.php/room');?>">
-                            <i class="material-icons">library_books</i>
-                            <p>Typography</p>
+                            <i class="material-icons">weekend</i>
+                            <p>Room</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url('index.php/roomtype');?>">
+                            <i class="material-icons">weekend</i>
+                            <p>Room Type</p>
                         </a>
                     </li>
                     <li>
                         <a href="<?php echo base_url('index.php/service');?>">
-                            <i class="material-icons">bubble_chart</i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('index.php/booking');?>">
                             <i class="material-icons">location_on</i>
-                            <p>Maps</p>
+                            <p>Service</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./notifications.html">
-                            <i class="material-icons text-gray">notifications</i>
-                            <p>Notifications</p>
-                        </a>
-                    </li>
-                    <li class="active-pro">
-                        <a href="upgrade.html">
-                            <i class="material-icons">unarchive</i>
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li>
+                    
+                    
                 </ul>
             </div>
         </div>

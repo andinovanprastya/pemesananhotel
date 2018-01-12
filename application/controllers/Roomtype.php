@@ -63,6 +63,8 @@ class Roomtype extends CI_Controller {
 			$data = array(
 			'roomtype_id' => $this->input->post('roomtype_id'),
 			'room_name' => $this->input->post('room_name'),
+			// 'gambar' => $this->upload->data('gambar'),
+			'stok' => $this->input->post('stok'),
 			'price' => $this->input->post('price'),
 			
 		);
@@ -86,6 +88,8 @@ class Roomtype extends CI_Controller {
 			$data = array(
 			'roomtype_id' => $this->input->post('roomtype_id'),
 			'room_name' => $this->input->post('room_name'),
+			//'gambar' => $this->upload->data('gambar'),
+			'stok' => $this->input->post('stok'),
 			'price' => $this->input->post('price'),
 			
 		);

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Genre extends CI_Controller {
+class Service extends CI_Controller {
 
 	var $API = "";
 
@@ -11,13 +11,15 @@ class Genre extends CI_Controller {
 		
 		$this->load->helper('url','form');
 		$this->load->library('form_validation');
-		$this->load->model('kasir_model');
-		$this->load->model('kategori_model');
+		// $this->load->model('kasir_model');
+		// $this->load->model('kategori_model');
 		$this->load->helper('html');
 		$this->load->library('image_lib');
 
 		//rest
-		$this->API="http://localhost/penjualanfilm-server/index.php";
+
+		$this->API="http://localhost/pemesananhotel-server/index.php";
+
 		$this->load->library('session');
 		$this->load->library('curl');
 		$this->load->helper('form');
@@ -49,8 +51,8 @@ class Genre extends CI_Controller {
 		// }
 
 		$this->load->view('partials/header');
-		$data['datagenre'] = json_decode($this->curl->simple_get($this->API.'/genre'));
-		$this->load->view('genre/list', $data);
+		$data['dataservice'] = json_decode($this->curl->simple_get($this->API.'/service'));
+		$this->load->view('service/list', $data);
 		$this->load->view('partials/footer');
 		//redirect('genre');
 	}
@@ -59,20 +61,22 @@ class Genre extends CI_Controller {
 	{
 		if (isset($_POST['submit'])) {
 			$data = array(
-			'genre_id' => $this->input->post('genre_id'),
-			'genre' => $this->input->post('genre'),
+			'id_service' => $this->input->post('id_service'),
+			'service' => $this->input->post('service'),
+			// 'gambar' => $this->input->post('gambar'),
+			'charge' => $this->input->post('charge'),
 			
 		);
-		$insert = $this->curl->simple_post($this->API.'/genre', $data, array(CURLOPT_BUFFERSIZE => 10));
+		$insert = $this->curl->simple_post($this->API.'/service', $data, array(CURLOPT_BUFFERSIZE => 10));
 			if ($insert) {
 				$this->session->set_flashdata('hasil', 'Insert Data Berhasil');
 			} else {
 				$this->session->flashdata('hasil', 'Insert Data Gagal');
 			}
-			redirect('genre');
+			redirect('service');
 		} else {
 			$this->load->view('partials/header');
-			$this->load->view('genre/create');
+			$this->load->view('service/create');
 			$this->load->view('partials/footer');
 		}		
 	}
@@ -81,22 +85,24 @@ class Genre extends CI_Controller {
 	{
 		if (isset($_POST['submit'])) {
 			$data = array(
-			'genre_id' => $this->input->post('genre_id'),
-			'genre' => $this->input->post('genre'),
+			'id_service' => $this->input->post('id_service'),
+			'service' => $this->input->post('service'),
+			// 'gambar' => $this->input->post('gambar'),
+			'charge' => $this->input->post('charge'),
 			
 		);
-		$update = $this->curl->simple_put($this->API.'/genre', $data, array(CURLOPT_BUFFERSIZE => 10));
+		$update = $this->curl->simple_put($this->API.'/service', $data, array(CURLOPT_BUFFERSIZE => 10));
 			if ($update) {
 				$this->session->set_flashdata('hasil', 'Update Data Berhasil');
 			} else {
 				$this->session->set_flashdata('hasil', 'Update Data Gagal');
 			}
-			redirect('genre');
+			redirect('service');
 		} else {
-			$params = array('genre_id'=> $this->uri->segment(3));
-			$data['datagenre'] = json_decode($this->curl->simple_get($this->API.'/genre', $params));
+			$params = array('id_service'=> $this->uri->segment(3));
+			$data['dataservice'] = json_decode($this->curl->simple_get($this->API.'/service', $params));
 			$this->load->view('partials/header');
-			$this->load->view('genre/edit',$data);
+			$this->load->view('service/edit',$data);
 			$this->load->view('partials/footer');
 		}
 		
@@ -105,15 +111,15 @@ class Genre extends CI_Controller {
 	function delete($id)
 	{
 		if (empty($id)) {
-			redirect('genre');
+			redirect('service');
 		} else {
-			$delete = $this->curl->simple_delete($this->API.'/genre', array('genre_id'=>$id), array(CURLOPT_BUFFERSIZE => 10));
+			$delete = $this->curl->simple_delete($this->API.'/service', array('id_service'=>$id), array(CURLOPT_BUFFERSIZE => 10));
 			if ($delete) {
 				$this->session->set_flashdata('hasil', 'Delete Data Berhasil');
 			} else {
 				$this->session->set_flashdata('hasil', 'Delete Data Gagal');
 			}
-			redirect('genre');
+			redirect('service');
 		}
 	}
 

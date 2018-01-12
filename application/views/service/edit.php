@@ -1,14 +1,14 @@
 
 <div class="content">
-    <?php echo form_open('roomtype/edit');?>
-    <?php echo form_hidden('roomtype_id',$datatype[0]->roomtype_id);?>
+    <?php echo form_open('service/edit');?>
+    <?php echo form_hidden('id_service',$dataservice[0]->id_service);?>
     
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header" data-background-color="purple">
-                                    <h4 class="title">Edit Room Type</h4>
+                                    <h4 class="title">Edit Service</h4>
                                     <!-- <p class="category">Complete your profile</p> -->
                                 </div>
                                 <div class="card-content">
@@ -17,7 +17,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Id</label>
-                                                    <input type="text" name="roomtype_id" class="form-control" disabled <?php echo form_input('',$datatype[0]->roomtype_id,"disabled");?>
+                                                    <input type="text" name="id_service" class="form-control" disabled <?php echo form_input('',$dataservice[0]->id_service,"disabled");?>
 
                                                 <!-- </div> -->
                                             </div>
@@ -26,9 +26,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating">
-                                                    <label class="control-label">Room Name</label>
-                                                    <input type="text" class="form-control" name="room_name"
-                                                    <?php echo form_input('roomtype',$datatype[0]->room_name);?>
+                                                    <label class="control-label">Service</label>
+                                                    <input type="text" class="form-control" name="service"
+                                                    <?php echo form_input('service',$dataservice[0]->service);?>
                                                 </div>
                                                 
                                                 <div class="row">
@@ -36,7 +36,7 @@
                                                     <div class="form-group label-floating">
                                                         <label class="control-label">Gambar</label>
                                                         <input type="file" class="form-control" name="gambar"
-                                                        <?php echo form_input('roomtype',$datatype[0]->gambar);?>
+                                                        <?php echo form_input('service',$dataservice[0]->gambar);?>
                                                 </div>
 
                                                 
@@ -47,26 +47,20 @@
                                                     <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group label-floating">
-                                                            <label class="control-label">Stok</label>
-                                                            <input type="text" class="form-control" name="stok"
-                                                            <?php echo form_input('roomtype',$datatype[0]->stok);?>
+                                                            <label class="control-label">Charge</label>
+                                                            <input type="text" class="form-control" name="charge"
+                                                            <?php echo form_input('service',$dataservice[0]->charge);?>
                                                         </div>
 
                                                     </div>
-                                                    <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Price</label>
-                                                            <input type="text" class="form-control" name="price"
-                                                            <?php echo form_input('roomtype',$datatype[0]->price);?>
-                                                        </div>
+                                                    
                                             </div>
 
 
                                         </div>
 
                                         
-                                        
+                                        </div>
                                         <button type="submit" class="btn btn-primary pull-right" href="<?php echo form_submit('submit','Simpan');?>">
                                             
                                         Save</button>
@@ -81,10 +75,12 @@
 
                                         <div class="clearfix"></div>
                                     </form>
-                                </div>
+                               
                             </div>
                         </div>
-                        
+                     </div>
+                     </div>
+                     </div>   
                 </div>
             </div>
 <?php

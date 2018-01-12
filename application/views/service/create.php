@@ -1,12 +1,12 @@
 
 <div class="content">
-    <?php echo form_open_multipart('roomtype/create'); ?>
+    <?php echo form_open_multipart('service/create'); ?>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header" data-background-color="purple">
-                                    <h4 class="title">Insert Room Type</h4>
+                                    <h4 class="title">Insert Service</h4>
                                     <!-- <p class="category">Complete your profile</p> -->
                                 </div>
                                 <div class="card-content">
@@ -23,9 +23,8 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating">
-                                                    <label class="control-label">Room Name</label>
-                                                    <input type="text" class="form-control" name="room_name">
-                                                    <!-- <?php echo form_input('room_name');?> -->
+                                                    <label class="control-label">Service</label>
+                                                    <input type="text" class="form-control" name="service">
                                                 </div>
                                             </div>
                                         </div>
@@ -42,20 +41,13 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating">
-                                                    <label class="control-label">Stok</label>
-                                                    <input type="number" class="form-control" name="stok">
+                                                    <label class="control-label">Charge</label>
+                                                    <input type="number" class="form-control" name="charge">
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Price</label>
-                                                    <input type="number" class="form-control" name="price">
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
 
                                         
                                         

@@ -9,8 +9,8 @@
                                 </div>
                                 <div class="card-content table-responsive">
                                     <table class="table">
-                                        <!-- <a href="#pablo" class="btn btn-primary btn-round">Tambah roomtype</a> -->
-                                        <a class="btn btn-primary btn-round" href="<?php echo base_url('index.php/roomtype/create'); ?>">
+                                        <!-- <a href="#pablo" class="btn btn-primary btn-round">Tambah service</a> -->
+                                        <a class="btn btn-primary btn-round" href="<?php echo base_url('index.php/service/create'); ?>">
                                             <i class="fa fa-plus"></i>   Tambah Data
                                         </a>
 
@@ -18,24 +18,22 @@
                             </button>
                                         <thead class="text-primary" >
                                             <th>Id</th>
-                                            <th>Nama Ruangan</th>
+                                            <th>Service</th>
                                             <th>Gambar</th>
-                                            <th>Stok</th>
-                                            <th>Harga</th>
+                                            <th>Charge</th>
                                             <th>Opsi</th>
                                         </thead>
                                         <tbody>
                                             <?php
-                                                foreach ($datatype as $roomtype){
+                                                foreach ($dataservice as $service){
                                                     echo "<tr>
-                                                            <td>$roomtype->roomtype_id</td>
-                                                            <td>$roomtype->room_name</td>
-                                                            <td>$roomtype->gambar</td>
-                                                            <td>$roomtype->stok</td>
-                                                            <td>$roomtype->price</td>
+                                                            <td>$service->id_service</td>
+                                                            <td>$service->service</td>
+                                                            <td>$service->gambar</td>
+                                                            <td>$service->charge</td>
                                                             
-                                                            <td>".anchor('roomtype/edit/'.$roomtype->roomtype_id,'Edit')." |
-                                                                ".anchor('roomtype/delete/'.$roomtype->roomtype_id,'Delete')."</td>
+                                                            <td>".anchor('service/edit/'.$service->id_service,'Edit')." |
+                                                                ".anchor('service/delete/'.$service->id_service,'Delete')."</td>
                                                           </tr>";
                                                 }
                                             ?>
