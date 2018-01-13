@@ -26,6 +26,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		//Menampilkan data room
 		function index(){
 			$data['dataroom']=json_decode($this->curl->simple_get($this->API.'/room'));
+			$data['room_name']=json_decode($this->curl->simple_get($this->API.'/roomtype'));
+			$data['service']=json_decode($this->curl->simple_get($this->API.'/service'));
 			$this->load->view('partials/header');
 			$this->load->view('room/list',$data);
 			$this->load->view('partials/footer');
@@ -40,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				'id_service' => $this->input->post('id_service'),
 				
 			);
-				
+			
 			$insert = $this->curl->simple_post($this->API.'/room', $data, array(CURLOPT_BUFFERSIZE => 10));
 				if ($insert) {
 					$this->session->set_flashdata('hasil', 'Insert Data Berhasil');
@@ -49,8 +51,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				}
 				redirect('room');
 			} else {
+				$data['room_name']=json_decode($this->curl->simple_get($this->API.'/roomtype'));
+				$data['service']=json_decode($this->curl->simple_get($this->API.'/service'));
 				$this->load->view('partials/header');
-				$this->load->view('room/create');
+				$this->load->view('room/create',$data);
+				//$this->load->view('room/create');
 				$this->load->view('partials/footer');
 			}		
 		}
@@ -74,6 +79,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			} else {
 				$params = array('room_id'=> $this->uri->segment(3));
 				$data['dataroom'] = json_decode($this->curl->simple_get($this->API.'/room', $params));
+				$data['room_name']=json_decode($this->curl->simple_get($this->API.'/roomtype'));
+				$data['service']=json_decode($this->curl->simple_get($this->API.'/service'));
 				$this->load->view('partials/header');
 				$this->load->view('room/edit',$data);
 				$this->load->view('partials/footer');

@@ -1,7 +1,7 @@
 
 <div class="content">
-    <?php echo form_open('roomtype/edit');?>
-    <?php echo form_hidden('roomtype_id',$datatype[0]->roomtype_id);?>
+    <?php echo form_open('room/edit');?>
+    <?php echo form_hidden('room_id',$dataroom[0]->room_id);?>
     
                 <div class="container-fluid">
                     <div class="row">
@@ -17,7 +17,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Id</label>
-                                                    <input type="text" name="roomtype_id" class="form-control" disabled <?php echo form_input('',$datatype[0]->roomtype_id,"disabled");?>
+                                                    <input type="text" name="room_id" class="form-control" disabled <?php echo form_input('',$dataroom[0]->room_id,"disabled");?>
 
                                                 <!-- </div> -->
                                             </div>
@@ -27,16 +27,25 @@
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Room Name</label>
-                                                    <input type="text" class="form-control" name="room_name"
-                                                    <?php echo form_input('roomtype',$datatype[0]->room_name);?>
+                                                    
+
+                                                    <select class="form-control" name="roomtype_id">
+                                                    <?php foreach ($room_name as $data) {?>
+                                                    <option value="<?php echo $data->roomtype_id; ?>"><?php echo $data->room_name; ?></option>
+                                                    <?php } ?> 
+                                                    </select>
+
                                                 </div>
                                                 
                                                 <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Gambar</label>
-                                                        <input type="file" class="form-control" name="gambar"
-                                                        <?php echo form_input('roomtype',$datatype[0]->gambar);?>
+                                                        <label class="control-label">Service</label>
+                                                         <select class="form-control" name="id_service">
+                                                            <?php foreach ($service as $key) {?>
+                                                            <option value="<?php echo $key->id_service; ?>"><?php echo $key->service; ?></option>
+                                                            <?php } ?> 
+                                                        </select>
                                                 </div>
 
                                                 
@@ -44,22 +53,9 @@
 
 
                                                 </div>
-                                                    <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Stok</label>
-                                                            <input type="text" class="form-control" name="stok"
-                                                            <?php echo form_input('roomtype',$datatype[0]->stok);?>
-                                                        </div>
+                                                    
 
-                                                    </div>
-                                                    <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group label-floating">
-                                                            <label class="control-label">Price</label>
-                                                            <input type="text" class="form-control" name="price"
-                                                            <?php echo form_input('roomtype',$datatype[0]->price);?>
-                                                        </div>
+
                                             </div>
 
 
