@@ -1,64 +1,98 @@
 <?php
-	defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-	require APPPATH .'/libraries/REST_Controller.php';
-	use Restserver\Libraries\REST_Controller;
+	class Room extends CI_Controller{
+		var $API="";
 
-	class room extends REST_Controller{
+		function __construct(){
+			parent::__construct();
+		
+			$this->load->helper('url','form');
+			$this->load->library('form_validation');
+			$this->load->helper('html');
+			$this->load->library('image_lib');
 
-		function __construct($config = 'rest'){
-			parent::__construct($config);
-			$this->load->database();
+			//rest
+
+			$this->API="http://localhost/pemesananhotel-server/index.php";
+
+			$this->load->library('session');
+			$this->load->library('curl');
+			
+
+
 		}
 
-		function index_get(){
-			$id = $this->get('room_id');
-			if($id ==''){
-				$room = $this->db->get('room')->result();
-			}else{
-				$this->db->where('room_id',$id);
-				$room = $this->db->get('room')->result();
+		//Menampilkan data room
+		function index(){
+			$data['dataroom']=json_decode($this->curl->simple_get($this->API.'/room'));
+			$this->load->view('partials/header');
+			$this->load->view('room/list',$data);
+			$this->load->view('partials/footer');
+		}
+
+		function create()
+		{
+			if (isset($_POST['submit'])) {
+				$data = array(
+				'room_id' => $this->input->post('room_id'),
+				'roomtype_id' => $this->input->post('roomtype_id'),
+				'id_service' => $this->input->post('id_service'),
+				
+			);
+				
+			$insert = $this->curl->simple_post($this->API.'/room', $data, array(CURLOPT_BUFFERSIZE => 10));
+				if ($insert) {
+					$this->session->set_flashdata('hasil', 'Insert Data Berhasil');
+				} else {
+					$this->session->flashdata('hasil', 'Insert Data Gagal');
+				}
+				redirect('room');
+			} else {
+				$this->load->view('partials/header');
+				$this->load->view('room/create');
+				$this->load->view('partials/footer');
+			}		
+		}
+
+		function edit()
+		{
+			if (isset($_POST['submit'])) {
+				$data = array(
+				'room_id' => $this->input->post('room_id'),
+				'roomtype_id' => $this->input->post('roomtype_id'),
+				'id_service' => $this->input->post('id_service'),
+				
+			);
+			$update = $this->curl->simple_put($this->API.'/room', $data, array(CURLOPT_BUFFERSIZE => 10));
+				if ($update) {
+					$this->session->set_flashdata('hasil', 'Update Data Berhasil');
+				} else {
+					$this->session->set_flashdata('hasil', 'Update Data Gagal');
+				}
+				redirect('room');
+			} else {
+				$params = array('room_id'=> $this->uri->segment(3));
+				$data['dataroom'] = json_decode($this->curl->simple_get($this->API.'/room', $params));
+				$this->load->view('partials/header');
+				$this->load->view('room/edit',$data);
+				$this->load->view('partials/footer');
 			}
-			$this->response($room,200);
+			
 		}
 
-		function index_post(){
-			$data = array(
-				'room_id' => $this->post('room_id'),
-				'roomtype_id' => $this->post('roomtype_id'),
-				'id_service' => $this->post('id_service'));
-			$insert = $this->db->insert('room',$data);
-			if($insert){
-				$this->response($data,200);
-			}else{
-				$this->response(array('status'=>'fail',502));
+		function delete($id)
+		{
+			if (empty($id)) {
+				redirect('room');
+			} else {
+				$delete = $this->curl->simple_delete($this->API.'/room', array('room_id'=>$id), array(CURLOPT_BUFFERSIZE => 10));
+				if ($delete) {
+					$this->session->set_flashdata('hasil', 'Delete Data Berhasil');
+				} else {
+					$this->session->set_flashdata('hasil', 'Delete Data Gagal');
+				}
+				redirect('room');
 			}
-		}
-
-		function index_put(){
-			$id = $this->put('room_id');
-			$data = array(
-				'room_id' => $this->put('room_id'),
-				'roomtype_id' => $this->put('roomtype_id'),
-				'id_service' => $this->put('id_service'));
-			$this->db->where('room_id',$id);
-			$update = $this->db->update('room',$data);
-			if($update){
-				$this->response($data,200);
-			}else{
-				$this->response(array('status'=>'fail',502));
-			}
-		}
-
-		function index_delete(){
-			$id = $this->delete('room_id');
-			$this->db->where('room_id',$id);
-			$delete = $this->db->delete('room');
-			if($delete){
-				$this->response(array('status'=>'success'),201);
-			}else{
-				$this->response(array('status'=>'fail',502));
-			}
-		}
 	}
-?>
+}
