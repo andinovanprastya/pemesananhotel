@@ -59,7 +59,7 @@ $data['ava'] = $session_data['ava'];
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url('index.php/payment');?>">
+                        <a href="<?php echo base_url('index.php/pembayaran');?>">
                             <i class="material-icons text-gray">payment</i>
                             <p>Pembayaran</p>
                         </a>
