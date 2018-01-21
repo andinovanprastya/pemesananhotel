@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				'id_booking' => $this->input->post('id_booking'),
 				'tgl_bayar' => $this->input->post('tgl_bayar'),
 				'total' => $this->input->post('total'),
-				'status' => $this->input->post('status'),
+				// 'status' => $this->input->post('status'),
 			);
 			
 			$insert = $this->curl->simple_post($this->API.'/pembayaran', $data, array(CURLOPT_BUFFERSIZE => 10));
@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				'id_booking' => $this->input->post('id_booking'),
 				'tgl_bayar' => $this->input->post('tgl_bayar'),
 				'total' => $this->input->post('total'),
-				'status' => $this->input->post('status'),
+				// 'status' => $this->input->post('status'),
 			);
 			$update = $this->curl->simple_put($this->API.'/pembayaran', $data, array(CURLOPT_BUFFERSIZE => 10));
 				if ($update) {

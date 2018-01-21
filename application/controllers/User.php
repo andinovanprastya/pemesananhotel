@@ -49,7 +49,7 @@ class User extends CI_Controller {
 		// }else{
 		// 	redirect('login','refresh');
 		// }
-
+		
 		$this->load->view('partials/header');
 		$data['datauser'] = json_decode($this->curl->simple_get($this->API.'/user'));
 		$this->load->view('user/list', $data);
@@ -79,6 +79,33 @@ class User extends CI_Controller {
 		} else {
 			$this->load->view('partials/header');
 			$this->load->view('user/create');
+			$this->load->view('partials/footer');
+		}		
+	}
+
+	function create2()
+	{
+		if (isset($_POST['submit'])) {
+			$data = array(
+			'user_id' => $this->input->post('user_id'),
+			'nama' => $this->input->post('nama'),
+			'alamat' => $this->input->post('alamat'),
+			'telp' => $this->input->post('telp'),
+			'email' => $this->input->post('email'),
+			'username' => $this->input->post('username'),
+			'password' => $this->input->post('password'),
+		);
+		$insert = $this->curl->simple_post($this->API.'/user', $data, array(CURLOPT_BUFFERSIZE => 10));
+			if ($insert) {
+				$this->session->set_flashdata('hasil', 'Insert Data Berhasil');
+			} else {
+				$this->session->flashdata('hasil', 'Insert Data Gagal');
+			}
+			redirect('booking/create');
+			// redirect('user');
+		} else {
+			$this->load->view('partials/header');
+			$this->load->view('user/create2');
 			$this->load->view('partials/footer');
 		}		
 	}

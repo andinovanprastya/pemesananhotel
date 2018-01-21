@@ -16,7 +16,7 @@ $data['ava'] = $session_data['ava'];
     <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url('/assets/img/apple-icon.png'); ?>" />
     <link rel="icon" type="image/png" href="<?php echo base_url('/assets/img/favicon.png'); ?>" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Material Dashboard by Creative Tim</title>
+    <title>Polinema Palace Hotel</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <!-- Bootstrap core CSS     -->
@@ -41,7 +41,7 @@ $data['ava'] = $session_data['ava'];
     -->
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
+                    Polinema Palace
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -103,7 +103,7 @@ $data['ava'] = $session_data['ava'];
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#"> Material Dashboard </a>
+                        <!-- <a class="navbar-brand" href="#"> Material Dashboard </a> -->
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
@@ -121,7 +121,7 @@ $data['ava'] = $session_data['ava'];
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="#">Mike John responded to your email</a>
+                                        <a href="<?php echo base_url('../pemesananhotel-user-a/index.php/home'); ?>">Mike John responded to your email</a>
                                     </li>
                                     <li>
                                         <a href="#">You have 5 new tasks</a>
@@ -137,11 +137,20 @@ $data['ava'] = $session_data['ava'];
                                     </li>
                                 </ul>
                             </li>
-                            <li>
+                            <li class="dropdown">
                                 <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="material-icons">person</i>
                                     <p class="hidden-lg hidden-md">Profile</p>
                                 </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#">User</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Admin</a>
+                                    </li>
+                                    
+                                </ul>
                             </li>
                         </ul>
                         <form class="navbar-form navbar-right" role="search">

@@ -10,9 +10,9 @@
                                 <div class="card-content table-responsive">
                                     <table class="table">
                                         <!-- <a href="#pablo" class="btn btn-primary btn-round">Tambah room</a> -->
-                                        <a class="btn btn-primary btn-round" href="<?php echo base_url('index.php/pembayaran/create'); ?>">
+                                        <!-- <a class="btn btn-primary btn-round" href="<?php echo base_url('index.php/pembayaran/create'); ?>">
                                             <i class="fa fa-plus"></i>   Tambah Data
-                                        </a>
+                                        </a> -->
 
                                        
                             </button>
@@ -21,7 +21,7 @@
                                             <th>Id Booking</th>
                                             <th>Tgl Bayar</th>
                                             <th>Total</th>
-                                            <th>Status</th>
+                                            <!-- <th>Status</th> -->
                                             <th>Opsi</th>
                                         </thead>
                                         <tbody>
@@ -32,7 +32,7 @@
                                                             <td>$pembayaran->id_booking</td>
                                                             <td>$pembayaran->tgl_bayar</td>
                                                             <td>$pembayaran->total</td>
-                                                            <td>$pembayaran->status</td>
+                                                           
                                                             
                                                             <td>".anchor('pembayaran/edit/'.$pembayaran->id_pembayaran,'Edit')." |
                                                                 ".anchor('pembayaran/delete/'.$pembayaran->id_pembayaran,'Delete')."</td>

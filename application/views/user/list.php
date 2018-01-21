@@ -4,7 +4,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header" data-background-color="purple">
-                                    <h4 class="title">DATA ROOM TYPE</h4>
+                                    <h4 class="title">USER</h4>
                                     <!-- <p class="category">Here is a subtitle for this table</p> -->
                                 </div>
                                 <div class="card-content table-responsive">

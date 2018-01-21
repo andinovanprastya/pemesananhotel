@@ -28,8 +28,8 @@ class Booking extends CI_Controller {
 	public function index()
 	{
 		
-		$data['user_id']=json_decode($this->curl->simple_get($this->API.'/user'));
-		$data['room_id']=json_decode($this->curl->simple_get($this->API.'/room'));
+		$data['nama']=json_decode($this->curl->simple_get($this->API.'/user'));
+		$data['room_name']=json_decode($this->curl->simple_get($this->API.'/roomtype'));
 		$this->load->view('partials/header');
 		$data['databooking'] = json_decode($this->curl->simple_get($this->API.'/booking'));
 		$this->load->view('booking/list', $data);
@@ -43,8 +43,7 @@ class Booking extends CI_Controller {
 			$data = array(
 			'id_booking' => $this->input->post('id_booking'),
 			'user_id' => $this->input->post('user_id'),
-			// 'gambar' => $this->upload->data('gambar'),
-			'room_id' => $this->input->post('room_id'),
+			'roomtype_id' => $this->input->post('roomtype_id'),
 			'booking_date' => $this->input->post('booking_date'),
 			'checkin' => $this->input->post('checkin'),
 			'checkout' => $this->input->post('checkout'),
@@ -58,13 +57,15 @@ class Booking extends CI_Controller {
 			}
 			redirect('booking');
 		} else {
-			$data['user_id']=json_decode($this->curl->simple_get($this->API.'/user'));
-			$data['room_id']=json_decode($this->curl->simple_get($this->API.'/room'));
+			$data['nama']=json_decode($this->curl->simple_get($this->API.'/user'));
+			$data['room_name']=json_decode($this->curl->simple_get($this->API.'/roomtype'));
 			$this->load->view('partials/header');
 			$this->load->view('booking/create',$data);
 			$this->load->view('partials/footer');
 		}		
 	}
+
+	
 
 	function edit()
 	{
@@ -72,8 +73,7 @@ class Booking extends CI_Controller {
 			$data = array(
 			'id_booking' => $this->input->post('id_booking'),
 			'user_id' => $this->input->post('user_id'),
-			// 'gambar' => $this->upload->data('gambar'),
-			'room_id' => $this->input->post('room_id'),
+			'roomtype_id' => $this->input->post('roomtype_id'),
 			'booking_date' => $this->input->post('booking_date'),
 			'checkin' => $this->input->post('checkin'),
 			'checkout' => $this->input->post('checkout'),
@@ -90,8 +90,8 @@ class Booking extends CI_Controller {
 		} else {
 			$params = array('id_booking'=> $this->uri->segment(3));
 			$data['databooking'] = json_decode($this->curl->simple_get($this->API.'/booking', $params));
-			$data['user_id']=json_decode($this->curl->simple_get($this->API.'/user'));
-			$data['room_id']=json_decode($this->curl->simple_get($this->API.'/room'));
+			$data['nama']=json_decode($this->curl->simple_get($this->API.'/user'));
+			$data['room_name']=json_decode($this->curl->simple_get($this->API.'/roomtype'));
 			$this->load->view('partials/header');
 			$this->load->view('booking/edit',$data);
 			$this->load->view('partials/footer');
@@ -114,19 +114,7 @@ class Booking extends CI_Controller {
 		}
 	}
 
-	//ajax
-	// public function data_server(){
-	// 	$this->load->library('Datatables');
-	// 	$this->datatables
-	// 		->select('genre_id,genre')
-	// 		->from('genre');
-	// 		// ->join('produk','detail_transaksi.id_produk = produk.id_produk')	;
-	// 		echo $this->datatables->generate();
-	// }
-	
 
-	
-	
 
 	
 }

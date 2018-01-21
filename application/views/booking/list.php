@@ -10,7 +10,7 @@
                                 <div class="card-content table-responsive">
                                     <table class="table">
                                         <!-- <a href="#pablo" class="btn btn-primary btn-round">Tambah room</a> -->
-                                        <a class="btn btn-primary btn-round" href="<?php echo base_url('index.php/booking/create'); ?>">
+                                        <a class="btn btn-primary btn-round" href="<?php echo base_url('index.php/user/create2'); ?>">
                                             <i class="fa fa-plus"></i>   Tambah Data
                                         </a>
 

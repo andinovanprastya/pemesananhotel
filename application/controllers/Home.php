@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
+var $API = "";
 	public function __construct()
 	{
 		parent::__construct();
@@ -12,6 +13,7 @@ class Home extends CI_Controller {
 		$this->load->model('kategori_model');
 		$this->load->helper('html');
 		$this->load->library('image_lib');
+		$this->API="http://localhost/pemesananhotel-server/index.php";
 		
 	}
 
