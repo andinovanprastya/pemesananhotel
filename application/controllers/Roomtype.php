@@ -59,11 +59,24 @@ class Roomtype extends CI_Controller {
 
 	function create()
 	{
+
+		$config['upload_path']          = './upload/roomtype/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 1000000000;
+        $config['max_width']            = 10240;
+        $config['max_height']           = 7680;
+
+    	$this->load->library('upload', $config);
+    	//$this->upload->initialize($config);
+		$this->upload->do_upload("gambar");
+    	//$data = array('upload_data'=>$this->upload->data("gambar"));      
+    	//$file_name = $data['upload_data']['file_name']; 
+
 		if (isset($_POST['submit'])) {
 			$data = array(
 			'roomtype_id' => $this->input->post('roomtype_id'),
 			'room_name' => $this->input->post('room_name'),
-			// 'gambar' => $this->upload->data('gambar'),
+			'gambar' => $this->upload->data('file_name'),
 			'stok' => $this->input->post('stok'),
 			'price' => $this->input->post('price'),
 			
@@ -84,11 +97,31 @@ class Roomtype extends CI_Controller {
 
 	function edit()
 	{
+		$config['upload_path']          = './upload/roomtype/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 1000000000;
+        $config['max_width']            = 10240;
+        $config['max_height']           = 7680;
+
+    	$this->load->library('upload', $config);
+    	//$this->upload->initialize($config);
+		$this->upload->do_upload("gambar");
+
+		$params = array('roomtype_id'=> $this->uri->segment(3));
+		$data['datatype'] = json_decode($this->curl->simple_get($this->API.'/roomtype', $params));
+		$data2 = json_decode($this->curl->simple_get($this->API.'/roomtype', $params));
+		$nama = $data2[0]->gambar;
+
+		//$data = array('upload_data'=>$this->upload->data("gambar"));      
+    	//$file_name = $data['upload_data']['file_name']; 
+    	//$image_data = $this->upload->data();
+    	//unlink('assets/uploads/'.$nama);
+
 		if (isset($_POST['submit'])) {
 			$data = array(
 			'roomtype_id' => $this->input->post('roomtype_id'),
 			'room_name' => $this->input->post('room_name'),
-			//'gambar' => $this->upload->data('gambar'),
+			'gambar' => $this->upload->data('file_name'),
 			'stok' => $this->input->post('stok'),
 			'price' => $this->input->post('price'),
 			
@@ -106,6 +139,9 @@ class Roomtype extends CI_Controller {
 			$this->load->view('partials/header');
 			$this->load->view('roomtype/edit',$data);
 			$this->load->view('partials/footer');
+
+			//$image_data = $this->upload->data();
+    		unlink('upload/roomtype/'.$nama);
 		}
 		
 	}

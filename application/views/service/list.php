@@ -25,18 +25,18 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                                foreach ($dataservice as $service){
-                                                    echo "<tr>
-                                                            <td>$service->id_service</td>
-                                                            <td>$service->service</td>
-                                                            <td>$service->gambar</td>
-                                                            <td>$service->charge</td>
+                                                foreach ($dataservice as $service){ ?>
+                                                    <tr>
+                                                            <td><?php echo$service->id_service?></td>
+                                                            <td><?php echo$service->service?></td>
+                                                            <td><img src="<?=base_url()?>upload/service/<?=$service->gambar ?>" style="width:100px;heigth:100px" class="img-responsive"></td>
+                                                            <td><?php echo$service->charge?></td>
                                                             
-                                                            <td>".anchor('service/edit/'.$service->id_service,'Edit')." |
-                                                                ".anchor('service/delete/'.$service->id_service,'Delete')."</td>
-                                                          </tr>";
-                                                }
+                                                    <?php echo "<td>".anchor('service/edit/'.$service->id_service,'     Edit')." |".anchor('service/delete/'.$service->id_service,'     Delete')."</td>" ?>
+                                                          </tr>
+                                             <?php   }
                                             ?>
+
                                             <!-- <tr>
                                                 <td>Dakota Rice</td>
                                                 <td>Niger</td>

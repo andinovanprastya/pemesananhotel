@@ -59,11 +59,31 @@ class Service extends CI_Controller {
 
 	function create()
 	{
+/*			$config['upload_path']   = './upload/';   
+    		$config['allowed_types'] = 'jpg|png';
+    		$config['overwrite']    =  TRUE;    
+    		$config['max_size']      = '100000';
+    		$config['max_width']     = '100000';
+    		$config['max_height']    = '100000';
+*/
+    	$config['upload_path']          = './upload/service/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 1000000000;
+        $config['max_width']            = 10240;
+        $config['max_height']           = 7680;
+
+    	$this->load->library('upload', $config);
+    	//$this->upload->initialize($config);
+		$this->upload->do_upload("gambar");
+    	//$data = array('upload_data'=>$this->upload->data("gambar"));      
+    	//$file_name = $data['upload_data']['file_name']; 
+
+
 		if (isset($_POST['submit'])) {
 			$data = array(
 			'id_service' => $this->input->post('id_service'),
 			'service' => $this->input->post('service'),
-			// 'gambar' => $this->input->post('gambar'),
+			'gambar' => $this->upload->data('file_name'),
 			'charge' => $this->input->post('charge'),
 			
 		);
@@ -83,11 +103,30 @@ class Service extends CI_Controller {
 
 	function edit()
 	{
+
+		$config['upload_path']          = './upload/service/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['max_size']             = 1000000000;
+        $config['max_width']            = 10240;
+        $config['max_height']           = 7680;
+
+    	$this->load->library('upload', $config);
+    	//$this->upload->initialize($config);
+		$this->upload->do_upload("gambar");
+   
+    	$params = array('id_service'=> $this->uri->segment(3));
+		$data['dataservice'] = json_decode($this->curl->simple_get($this->API.'/service', $params));
+		$data2 = json_decode($this->curl->simple_get($this->API.'/service', $params));
+		$nama = $data2[0]->gambar;
+		//$data = array('upload_data'=>$this->upload->data("gambar"));      
+    	//$file_name = $data['upload_data']['file_name']; 
+    	//$image_data = $this->upload->data
+
 		if (isset($_POST['submit'])) {
 			$data = array(
 			'id_service' => $this->input->post('id_service'),
 			'service' => $this->input->post('service'),
-			// 'gambar' => $this->input->post('gambar'),
+			'gambar' => $this->upload->data('file_name'),
 			'charge' => $this->input->post('charge'),
 			
 		);
@@ -104,6 +143,8 @@ class Service extends CI_Controller {
 			$this->load->view('partials/header');
 			$this->load->view('service/edit',$data);
 			$this->load->view('partials/footer');
+
+			unlink('upload/service/'.$nama);
 		}
 		
 	}

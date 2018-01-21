@@ -33,7 +33,8 @@
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Gambar</label>
-                                                    <input type="file" class="form-control" name="gambar">
+                                                    <input type="file" class="form-control" name="gambar" size="20">
+                                                    <input type="submit" value="upload" />
                                                 </div>
                                             </div>
                                         </div>

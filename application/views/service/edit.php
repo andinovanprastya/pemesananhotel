@@ -1,6 +1,6 @@
 
 <div class="content">
-    <?php echo form_open('service/edit');?>
+    <?php echo form_open_multipart('service/edit');?>
     <?php echo form_hidden('id_service',$dataservice[0]->id_service);?>
     
                 <div class="container-fluid">
@@ -35,7 +35,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group label-floating">
                                                         <label class="control-label">Gambar</label>
-                                                        <input type="file" class="form-control" name="gambar"
+                                                        <input type="file" class="form-control" name="gambar" size="20"
                                                         <?php echo form_input('service',$dataservice[0]->gambar);?>
                                                 </div>
 

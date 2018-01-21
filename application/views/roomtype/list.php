@@ -26,18 +26,17 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                                foreach ($datatype as $roomtype){
-                                                    echo "<tr>
-                                                            <td>$roomtype->roomtype_id</td>
-                                                            <td>$roomtype->room_name</td>
-                                                            <td>$roomtype->gambar</td>
-                                                            <td>$roomtype->stok</td>
-                                                            <td>$roomtype->price</td>
+                                                foreach ($datatype as $roomtype){ ?>
+                                                    <tr>
+                                                            <td><?php echo$roomtype->roomtype_id?></td>
+                                                            <td><?php echo$roomtype->room_name?></td>
+                                                            <td><img src="<?=base_url()?>upload/roomtype/<?=$roomtype->gambar ?>" style="width:100px;heigth:100px" class="img-responsive"></td>
+                                                            <td><?php echo$roomtype->stok?></td>
+                                                            <td><?php echo$roomtype->price?></td>
                                                             
-                                                            <td>".anchor('roomtype/edit/'.$roomtype->roomtype_id,'Edit')." |
-                                                                ".anchor('roomtype/delete/'.$roomtype->roomtype_id,'Delete')."</td>
-                                                          </tr>";
-                                                }
+                                                    <?php echo "<td>".anchor('roomtype/edit/'.$roomtype->roomtype_id,'     Edit')." |".anchor('roomtype/delete/'.$roomtype->roomtype_id,'     Delete')."</td>" ?>
+                                                          </tr>
+                                             <?php   }
                                             ?>
                                             <!-- <tr>
                                                 <td>Dakota Rice</td>
@@ -54,3 +53,6 @@
                         
                 </div>
             </div>
+
+</div>
+    

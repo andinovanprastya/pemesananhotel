@@ -1,6 +1,6 @@
 
 <div class="content">
-    <?php echo form_open('roomtype/edit');?>
+    <?php echo form_open_multipart('roomtype/edit');?>
     <?php echo form_hidden('roomtype_id',$datatype[0]->roomtype_id);?>
     
                 <div class="container-fluid">
